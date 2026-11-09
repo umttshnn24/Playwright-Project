@@ -14,6 +14,9 @@ const hasDisplay =
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+// VS Code eklentisi veya worker çalıştığında DISPLAY değerini zorunlu kıl
+process.env.DISPLAY = process.env.DISPLAY || ':1';
+
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -23,24 +26,25 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 3 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: !hasDisplay,
+    headless: false,
+    testIdAttribute: 'data-test',
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    /* Retain traces for failed tests. See https://playwright.dev/docs/trace-viewer */
+    trace: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     },
 
     {

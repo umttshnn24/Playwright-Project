@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:headed": "DISPLAY=:1 playwright test --headed"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/umttshnn24/Playwright-Project.git"
