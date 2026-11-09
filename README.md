@@ -96,7 +96,7 @@ code --install-extension GitHub.copilot
 code --install-extension GitHub.copilot-chat
 ```
 
-Yalnızca kullanacağınız özelliklerin eklentilerini kurun. Bu depoda eklentileri otomatik öneren bir `.vscode/extensions.json` veya Dev Container eklenti listesi tanımlı değildir. `.vscode/mcp.json` içindeki örnek yapılandırma yorum satırındadır; Playwright MCP sunucusu etkin değildir ve standart test koşumu için gerekmez.
+Yalnızca kullanacağınız özelliklerin eklentilerini kurun. Bu depoda eklentileri otomatik öneren bir `.vscode/extensions.json` veya Dev Container eklenti listesi tanımlı değildir. Playwright MCP sunucusu `.vscode/mcp.json` içinde isteğe bağlı olarak yapılandırılmıştır; standart test koşumu için gerekli değildir.
 
 ## Dev Container ile başlama
 
